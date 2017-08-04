@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import BookShelves from './BookShelves';
-import AddBook from './AddBook';
+import SearchBook from './SearchBook';
 import { Route } from 'react-router-dom';
 
 class App extends Component {
@@ -24,8 +24,8 @@ class App extends Component {
             />
             )}
         />
-        <Route path='/add' render={()=>(
-            <AddBook books={this.state.books}/>
+        <Route path='/search' render={()=>(
+            <SearchBook books={this.state.books}/>
             )}
         />
       </div>

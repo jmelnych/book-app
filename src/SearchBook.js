@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class AddBook extends Component{
+class SearchBook extends Component{
     render(){
        console.log(this.props.books[0]);
         return (
@@ -15,7 +15,6 @@ class AddBook extends Component{
                     <div className="search-books-results">
                       <ol className="books-grid">
                       {this.props.books.map((book)=>(
-                        // <li key={book.id}>{book.title} and {book.authors}</li>
                         <li key={book.id}>
                           <div className="book">
                             <div className="book-top">
@@ -43,4 +42,4 @@ class AddBook extends Component{
     }
 }
 
-export default AddBook;
+export default SearchBook;

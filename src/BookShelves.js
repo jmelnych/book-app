@@ -38,7 +38,7 @@ class BookShelves extends Component {
                     </div>
                     <div className="open-search">
                         <Link
-                        to='/add'>Add a book</Link>
+                        to='/search'>Add a book</Link>
                     </div>
                 </div>
              </div>)
