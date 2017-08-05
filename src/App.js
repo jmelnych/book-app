@@ -17,11 +17,17 @@ class App extends Component {
   }
 
   updateShelf = (book, shelf) => {
-    this.setState((state) => console.log('update me!'))
+    BooksAPI.update(book, shelf)
+      .then((booksUpdate) => {
+        book.shelf = shelf; //update book we change to a new shelf
+       this.setState((state) => ({
+        books: state.books.filter((b) => b.id !== book.id).concat([book])
+      }))
+    })
+
   }
 
   render() {
-    //console.log(this.state.books[3]);
     return (
       <div className="App">
         <Route exact path='/' render={()=>(
