@@ -7,7 +7,7 @@ import { Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
-    books: [] // store 3 categories: currently reading books, wants, to read
+    books: []
   }
 
  componentDidMount(){
@@ -16,16 +16,22 @@ class App extends Component {
     })
   }
 
+  updateShelf = (book, shelf) => {
+    this.setState((state) => console.log('update me!'))
+  }
+
   render() {
+    //console.log(this.state.books[3]);
     return (
       <div className="App">
         <Route exact path='/' render={()=>(
-            <BookShelves
+            <BookShelves books={this.state.books}
+                         onChangeShelf={this.updateShelf}
             />
             )}
         />
         <Route path='/search' render={()=>(
-            <SearchBook books={this.state.books}/>
+            <SearchBook />
             )}
         />
       </div>
