@@ -1,31 +1,41 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import * as BooksAPI from './BooksAPI';
 
 class SearchBook extends Component{
-  // state = {
-  //   query: ''
-  // }
+  state = {
+    booksResult: []
+  }
   // updateQuery = (query) => {
   //   this.setState({query: query.trim()})
   // }
 
+   searchBook = (query) => {
+    if (query){
+       BooksAPI.search(query, 10)
+        .then((booksResult) => {
+          this.setState({booksResult}) //SEARCH: request of new books arr
+        })
+    }
+  }
+
     render(){
-      console.log(this.props.requestedBooks);
+      console.log(this.props.booksResult);
         return (
                 <div className="search-books">
                     <div className="search-books-bar">
                       <Link to='/' className="close-search">Close</Link>
                       <div className="search-books-input-wrapper">
                         <input type="text" placeholder="Search by title or author"
-                              //value={this.state.query}
-                              //onChange={(event) => this.updateQuery(event.target.value)}
-                              onChange={(e) => this.props.onSearchBook(e.target.value)}
+                              // value={this.state.query}
+                              // onChange={(event) => this.updateQuery(event.target.value)}
+                              onChange={(e) => this.searchBook(e.target.value)}
                               />
                       </div>
                     </div>
                     <div className="search-books-results">
                       <ol className="books-grid">
-                        {this.props.requestedBooks.map((book)=>(
+                        {this.state.booksResult.map((book)=>(
                             <li key={book.id}>
                               <div className="book">
                                 <div className="book-top">
