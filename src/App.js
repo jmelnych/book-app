@@ -7,8 +7,7 @@ import { Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
-    books: [],
-    booksResult: [] //SEARCH: can I have 2? DELETE
+    books: []
   }
 
  componentDidMount(){
@@ -27,17 +26,9 @@ class App extends Component {
     })
   }
 
-  // searchBook = (query) => {
-  //   if (query){
-  //      BooksAPI.search(query, 10)
-  //       .then((booksResult) => {
-  //         this.setState({booksResult}) //SEARCH: request of new books arr
-  //       })
-  //   }
-  // }
 
   render() {
-    //console.log(this.state.booksResult);
+    //console.log(this.state.books);
     return (
       <div className="App">
         <Route exact path='/' render={()=>(
@@ -47,8 +38,9 @@ class App extends Component {
             )}
         />
         <Route path='/search' render={()=>(
-            <SearchBook  //DELETE
-                      /> //DELETE
+            <SearchBook onChangeShelf={this.updateShelf}
+                        books={this.state.books}
+                      />
             )}
         />
       </div>

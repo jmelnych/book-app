@@ -6,30 +6,44 @@ class SearchBook extends Component{
   state = {
     booksResult: []
   }
-  // updateQuery = (query) => {
-  //   this.setState({query: query.trim()})
-  // }
 
    searchBook = (query) => {
     if (query){
        BooksAPI.search(query, 10)
         .then((booksResult) => {
-          this.setState({booksResult}) //SEARCH: request of new books arr
+          const myLib = new Map();
+          this.props.books.map(shelvedBook => myLib.set(shelvedBook.id, shelvedBook.shelf));
+          // store my lib as a key-value pairs: {"nggnmAEACAAJ" => "currentlyReading"}
+          booksResult.map(function(book){
+            for (let [id, shelf] of myLib){
+              if (book.id === id) {
+                console.log(book.id + " " + shelf);
+                book.shelf = shelf;
+              }
+            }
+          }
+
+        )
+          console.log(booksResult);
+
+
+        this.setState({booksResult})
         })
     }
   }
 
+
+
     render(){
-      console.log(this.props.booksResult);
+     // console.log(this.props.books);
+     //console.log(this.state.booksResult);
         return (
                 <div className="search-books">
                     <div className="search-books-bar">
                       <Link to='/' className="close-search">Close</Link>
                       <div className="search-books-input-wrapper">
                         <input type="text" placeholder="Search by title or author"
-                              // value={this.state.query}
-                              // onChange={(event) => this.updateQuery(event.target.value)}
-                              onChange={(e) => this.searchBook(e.target.value)}
+                              onChange= {(e) => this.searchBook(e.target.value)}
                               />
                       </div>
                     </div>
@@ -41,7 +55,7 @@ class SearchBook extends Component{
                                 <div className="book-top">
                                   <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                                   <div className="book-shelf-changer">
-                                    <select value={book.shelf} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}>
+                                    <select value={book.shelf || "none"} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}> {/* instead of this.props.onChangeShelf */}
                                       <option value="none" disabled>Move to...</option>
                                       <option value="currentlyReading">Currently Reading</option>
                                       <option value="wantToRead">Want to Read</option>
