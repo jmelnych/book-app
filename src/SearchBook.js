@@ -32,10 +32,10 @@ class SearchBook extends Component{
 
     render(){
         const labelColorShelved = {
-            'background-color': '#60ac5d'
+            'backgroundColor': '#60ac5d'
         }
         const labelColorNew = {
-            'background-color': 'orange'
+            'backgroundColor': 'orange'
         }
         return (
                 <div className="search-books">
