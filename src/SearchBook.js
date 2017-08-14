@@ -24,19 +24,19 @@ class SearchBook extends Component{
           }
 
         )
-          console.log(booksResult);
-
-
         this.setState({booksResult})
         })
     }
   }
 
 
-
     render(){
-     // console.log(this.props.books);
-     //console.log(this.state.booksResult);
+        const labelColorShelved = {
+            'background-color': '#60ac5d'
+        }
+        const labelColorNew = {
+            'background-color': 'orange'
+        }
         return (
                 <div className="search-books">
                     <div className="search-books-bar">
@@ -54,8 +54,8 @@ class SearchBook extends Component{
                               <div className="book">
                                 <div className="book-top">
                                   <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
-                                  <div className="book-shelf-changer">
-                                    <select value={book.shelf || "none"} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}> {/* instead of this.props.onChangeShelf */}
+                                  <div className="book-shelf-changer" style ={(book.shelf) ? labelColorShelved : labelColorNew}>
+                                    <select value={book.shelf || "none"} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}>
                                       <option value="none" disabled>Move to...</option>
                                       <option value="currentlyReading">Currently Reading</option>
                                       <option value="wantToRead">Want to Read</option>
