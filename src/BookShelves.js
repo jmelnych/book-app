@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 
 class BookShelves extends Component {
-
     render(){
         /* filter by bookshelves for further mapping in UI */
         const currentlyReadingBooks = this.props.books.filter(book=>
@@ -11,7 +10,7 @@ class BookShelves extends Component {
             book.shelf === 'wantToRead')
         const readBooks = this.props.books.filter(book =>
             book.shelf === 'read')
-
+        //console.log(this.props.books);
         return (
             <div className="bookshelves">
                 <div className="list-books">
@@ -28,9 +27,11 @@ class BookShelves extends Component {
                                         <li key={book.id}>
                                           <div className="book">
                                             <div className="book-top">
-                                              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                              <Link to={'/book/' + book.id}><div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}
+                                              onClick={() => this.props.aboutBook(book)}></div></Link>
+
                                               <div className="book-shelf-changer">
-                                                <select value={book.shelf} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}>
+                                                <select value={book.shelf} onChange={(e)=> this.props.onChangeShelf(book, e.target)}>
                                                   <option value="none" disabled>Move to...</option>
                                                   <option value="currentlyReading">Currently Reading</option>
                                                   <option value="wantToRead">Want to Read</option>
@@ -57,7 +58,7 @@ class BookShelves extends Component {
                                         <li key={book.id}>
                                           <div className="book">
                                             <div className="book-top">
-                                              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                              <Link to='/book'><div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div></Link>
                                               <div className="book-shelf-changer">
                                                 <select value={book.shelf} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}>
                                                   <option value="none" disabled>Move to...</option>
@@ -86,7 +87,7 @@ class BookShelves extends Component {
                                         <li key={book.id}>
                                           <div className="book">
                                             <div className="book-top">
-                                              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                              <Link to='/book'><div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div></Link>
                                               <div className="book-shelf-changer">
                                                 <select value={book.shelf} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}>
                                                   <option value="none" disabled>Move to...</option>

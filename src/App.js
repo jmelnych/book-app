@@ -4,10 +4,12 @@ import './App.css';
 import BookShelves from './BookShelves';
 import SearchBook from './SearchBook';
 import { Route } from 'react-router-dom';
+import Book from './Book';
 
 class App extends Component {
   state = {
-    books: []
+    books: [],
+    bookClicked: []
   }
 
  componentDidMount(){
@@ -26,22 +28,30 @@ class App extends Component {
     })
   }
 
+  showBookDetails = (bookClicked) => {
+    this.setState({bookClicked});
+  }
+
 
   render() {
-    //console.log(this.state.books);
+    console.log(this.state.bookClicked);
     return (
       <div className="App">
         <Route exact path='/' render={()=>(
             <BookShelves books={this.state.books}
                          onChangeShelf={this.updateShelf}
-            />
+                         aboutBook = {this.showBookDetails}/>
             )}
         />
         <Route path='/search' render={()=>(
             <SearchBook onChangeShelf={this.updateShelf}
-                        books={this.state.books}
-                      />
+                        books={this.state.books}/>
             )}
+        />
+        <Route path='/book' render={()=>(
+          <Book currentBook={this.state.bookClicked}
+          />
+        )}
         />
       </div>
     )

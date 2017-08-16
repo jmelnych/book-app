@@ -14,17 +14,17 @@ class SearchBook extends Component{
           const myLib = new Map();
           this.props.books.map(shelvedBook => myLib.set(shelvedBook.id, shelvedBook.shelf));
           // store my lib as a key-value pairs: {"nggnmAEACAAJ" => "currentlyReading"}
-          booksResult.map(function(book){
+          booksResult.map((book) => {
             for (let [id, shelf] of myLib){
               if (book.id === id) {
-                console.log(book.id + " " + shelf);
                 book.shelf = shelf;
               }
             }
-          }
-
-        )
-        this.setState({booksResult})
+          })
+          this.setState({booksResult})
+        })
+        .catch(e => {
+          console.log(e)
         })
     }
   }
