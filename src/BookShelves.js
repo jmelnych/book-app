@@ -58,7 +58,8 @@ class BookShelves extends Component {
                                         <li key={book.id}>
                                           <div className="book">
                                             <div className="book-top">
-                                              <Link to='/book'><div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div></Link>
+                                              <Link to={'/book/' + book.id}><div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}
+                                              onClick={() => this.props.aboutBook(book)}></div></Link>
                                               <div className="book-shelf-changer">
                                                 <select value={book.shelf} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}>
                                                   <option value="none" disabled>Move to...</option>
@@ -87,7 +88,8 @@ class BookShelves extends Component {
                                         <li key={book.id}>
                                           <div className="book">
                                             <div className="book-top">
-                                              <Link to='/book'><div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div></Link>
+                                              <Link to={'/book/' + book.id}><div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}
+                                              onClick={() => this.props.aboutBook(book)}></div></Link>
                                               <div className="book-shelf-changer">
                                                 <select value={book.shelf} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}>
                                                   <option value="none" disabled>Move to...</option>

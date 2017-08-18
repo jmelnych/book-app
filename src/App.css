@@ -172,3 +172,55 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+/* book page */
+
+.about-area{
+  display: flex;
+  margin: 5%;
+}
+
+.close-details {
+  position: absolute;
+  width: 50px;
+  top: 0px;
+  left: 20px;
+  height: 53px;
+  background: white;
+  background-image: url('./icons/arrow-back.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  font-size: 0;
+}
+
+.book-details-container{
+    margin: 0 50px;
+}
+
+.book-description{
+  font-size: 0.9em;
+}
+
+.book-title-about {
+  font-size: 1.8em;
+}
+
+.book-authors-about{
+  font-size: 1.4em;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.rating{
+  margin-top: 30px;
+}
+
+.rating, .lang, .pages{
+  color: grey;
+  text-align: center;
+}
+
+.lang, .pages{
+  font-size: 0.8em;
+}
