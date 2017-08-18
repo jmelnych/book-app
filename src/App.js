@@ -40,16 +40,20 @@ class App extends Component {
         <Route exact path='/' render={()=>(
             <BookShelves books={this.state.books}
                          onChangeShelf={this.updateShelf}
-                         aboutBook = {this.showBookDetails}/>
+                         aboutBook = {this.showBookDetails}
+            />
             )}
         />
         <Route path='/search' render={()=>(
             <SearchBook onChangeShelf={this.updateShelf}
-                        books={this.state.books}/>
+                        books={this.state.books}
+                        aboutBook = {this.showBookDetails}
+            />
             )}
         />
         <Route path='/book' render={()=>(
           <Book currentBook={this.state.bookClicked}
+                onChangeShelf={this.updateShelf}
           />
         )}
         />

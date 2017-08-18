@@ -53,7 +53,8 @@ class SearchBook extends Component{
                             <li key={book.id}>
                               <div className="book">
                                 <div className="book-top">
-                                  <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                  <Link to={'/book/' + book.id}><div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}
+                                              onClick={() => this.props.aboutBook(book)}></div></Link>
                                   <div className="book-shelf-changer" style ={(book.shelf) ? labelColorShelved : labelColorNew}>
                                     <select value={book.shelf || "none"} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}>
                                       <option value="none" disabled>Move to...</option>

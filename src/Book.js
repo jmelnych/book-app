@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 
 class Book extends Component {
     render(){
-        console.log(this.props.currentBook);
+        //console.log(this.props.currentBook);
+        const labelColorShelved = {
+            'backgroundColor': '#60ac5d'
+        }
+        const labelColorNew = {
+            'backgroundColor': 'orange'
+        }
         return (
                 <div className="about-area">
                   <Link to='/' className="close-details">Close</Link>
@@ -11,7 +17,7 @@ class Book extends Component {
                   <div className="book" key={this.props.currentBook.id}>
                     <div className="book-top">
                       <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.currentBook.imageLinks.thumbnail})` }}></div>
-                      <div className="book-shelf-changer" >
+                      <div className="book-shelf-changer" style ={(this.props.currentBook.shelf) ? labelColorShelved : labelColorNew}>
                         <select value={this.props.currentBook.shelf || "none"} onChange={(e)=> this.props.onChangeShelf(this.props.currentBook, e.target.value)}>
                           <option value="none" disabled>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
