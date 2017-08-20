@@ -10,6 +10,7 @@ class SearchBook extends Component{
 
   updateQuery = (query) => {
     this.setState({query: query.trim()});
+    this.setState({booksResult: []});
     if (this.state.query.length > 1){
       this.searchBook(this.state.query);
     }
@@ -56,12 +57,12 @@ class SearchBook extends Component{
                     <div className="search-books-bar">
                       <Link to='/' className="close-search">Close</Link>
                       <div className="search-books-input-wrapper">
-                    {/*{JSON.stringify(this.state)}*/
-                        <input type="text" placeholder="Search by title or author"
+
+                        <input type="text" placeholder="Search by title"
                               value={this.state.query}
                               onChange= {(e) => this.updateQuery(e.target.value)}
                               />
-                      }
+
                       </div>
                     </div>
 
