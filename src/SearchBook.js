@@ -4,7 +4,15 @@ import * as BooksAPI from './BooksAPI';
 
 class SearchBook extends Component{
   state = {
+    query: '',
     booksResult: []
+  }
+
+  updateQuery = (query) => {
+    this.setState({query: query.trim()});
+    if (this.state.query.length > 1){
+      this.searchBook(this.state.query);
+    }
   }
 
    searchBook = (query) => {
@@ -24,13 +32,14 @@ class SearchBook extends Component{
           this.setState({booksResult})
         })
         .catch(e => {
-          console.log(e)
+          let error = e;
         })
     }
   }
 
 
     render(){
+      console.log(this.state.booksResult);
         const labelColorShelved = {
             'backgroundColor': '#60ac5d'
         }
@@ -42,11 +51,16 @@ class SearchBook extends Component{
                     <div className="search-books-bar">
                       <Link to='/' className="close-search">Close</Link>
                       <div className="search-books-input-wrapper">
+                    {/*{JSON.stringify(this.state)}*/
                         <input type="text" placeholder="Search by title or author"
-                              onChange= {(e) => this.searchBook(e.target.value)}
+                              value={this.state.query}
+                              onChange= {(e) => this.updateQuery(e.target.value)}
                               />
+                      }
                       </div>
                     </div>
+
+
                     <div className="search-books-results">
                       <ol className="books-grid">
                         {this.state.booksResult.map((book)=>(
@@ -73,6 +87,7 @@ class SearchBook extends Component{
                           )}
                         </ol>
                     </div>
+
                 </div>
             )
     }

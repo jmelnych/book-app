@@ -103,6 +103,12 @@ body, .app {
   padding: 80px 10px 20px;
 }
 
+.showing-results{
+  width: 100%;
+  text-align: center;
+  margin: 80px auto;
+}
+
 /* books grid */
 
 .books-grid {
@@ -172,6 +178,7 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
 
 /* book page */
 

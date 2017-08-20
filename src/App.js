@@ -34,7 +34,7 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.bookClicked);
+    //console.log(this.state.bookClicked);
     return (
       <div className="App">
         <Route exact path='/' render={()=>(
