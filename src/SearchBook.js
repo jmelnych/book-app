@@ -37,6 +37,11 @@ class SearchBook extends Component{
     }
   }
 
+  clearQuery = (query) => {
+    this.setState({query: ''});
+    this.setState({booksResult: []})
+  }
+
 
     render(){
       console.log(this.state.booksResult);
@@ -60,6 +65,12 @@ class SearchBook extends Component{
                       </div>
                     </div>
 
+                    { this.state.query  && (
+                      <div className='showing-results'>
+                      <span>Found {this.state.booksResult.length} for "{this.state.query}" request</span>
+                      <button className='clear' onClick={this.clearQuery}>Clear search</button>
+                      </div>
+                      )}
 
                     <div className="search-books-results">
                       <ol className="books-grid">

@@ -100,13 +100,26 @@ body, .app {
 }
 
 .search-books-results {
-  padding: 80px 10px 20px;
+  padding: 20px 10px 20px;
 }
 
 .showing-results{
   width: 100%;
   text-align: center;
-  margin: 80px auto;
+  margin: 80px auto 0;
+}
+
+.clear{
+  background: #3498db;
+  border: 1px #3498db solid;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 5px 15px 5px 15px;
+  margin-left: 10px;
+  text-decoration: none;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  cursor: pointer;
 }
 
 /* books grid */
