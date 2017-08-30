@@ -1,3 +1,11 @@
+## How to install application files
+Make sure you've installed node.js https://nodejs.org/ so your computer is able to undertsand 'npm' command.
+Clone the repository to your computer.
+Run 'npm install' command. By default, npm install will install all modules listed as dependencies in package.json.
+
+## How to run the application
+Make sure that you're in book_app directory. Launch the app with 'npm start' command in the terminal. The page of the book app will be opened in your default browser.
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
@@ -1760,7 +1768,7 @@ If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to c
     RewriteRule ^ index.html [QSA,L]
 ```
 
-It will get copied to the `build` folder when you run `npm run build`. 
+It will get copied to the `build` folder when you run `npm run build`.
 
 If you’re using [Apache Tomcat](http://tomcat.apache.org/), you need to follow [this Stack Overflow answer](https://stackoverflow.com/a/41249464/4878474).
 
