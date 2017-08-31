@@ -31,7 +31,7 @@ class BookShelves extends Component {
                                               onClick={() => this.props.aboutBook(book)}></div></Link>
 
                                               <div className="book-shelf-changer">
-                                                <select value={book.shelf} onChange={(e)=> this.props.onChangeShelf(book, e.target)}>
+                                                <select value={book.shelf} onChange={(e)=> this.props.onChangeShelf(book, e.target.value)}>
                                                   <option value="none" disabled>Move to...</option>
                                                   <option value="currentlyReading">Currently Reading</option>
                                                   <option value="wantToRead">Want to Read</option>
