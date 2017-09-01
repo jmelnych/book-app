@@ -9,8 +9,10 @@ class SearchBook extends Component{
   }
   updateQuery = (query) => {
     this.setState({query: query.trim()});
-    this.setState({booksResult: []});
-    if (this.state.query.length){
+    if (query.length === 0){
+     this.setState({booksResult: []});
+   }
+    if (query.length){
       this.searchBook(query.trim());
     }
   }
@@ -38,13 +40,11 @@ class SearchBook extends Component{
   }
 
   clearQuery = (query) => {
-    this.setState({query: ''});
-    this.setState({booksResult: []})
+    this.setState({query: ''}, {booksResult: []});
   }
 
 
     render(){
-      //console.log(this.state.booksResult);
         const labelColorShelved = {
             'backgroundColor': '#60ac5d'
         }
